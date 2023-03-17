@@ -1,21 +1,27 @@
 package Task1;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Stream;
 
 public class NumberingOfNames {
     public static void main(String[] args) {
-        String[] names = {"Olena", "Oleg", "Anton", "Svitlana", "John", "Bill", "Max", "Alex"};
-        int i = 1;
-        Stream<String> name = Arrays.asList(names)
-                .stream()
-                .map(names-> {
-                    return (i+"." + names;
-                })
-
-
-
+        List<String> names = new ArrayList<>();
+        names.add("Anton");
+        names.add("Ivan");
+        names.add("Olena");
+        names.add("Peter");
+        names.add("Oksana");
+        names.add("John");
+        names.add("Oleg");
+        names.add("Svitlana");
+        names.add("Alex");
+        String result = IntStream.range(0, names.size())
+                .filter(i -> i % 2 == 0)
+                .mapToObj(i -> (i + 1) + ". " + names.get(i))
+                .collect(Collectors.joining(", "));
+        System.out.println(result);
     }
     }
 
